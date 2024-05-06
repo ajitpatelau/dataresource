@@ -2,7 +2,7 @@ provider "azurerm" {
   features {}
 }   
 
-/*
+
 provider "azuread" {
   tenant_id = "d96cb337-1a87-44cf-b69b-3cec334a4c1f"
 }
@@ -12,7 +12,7 @@ provider "azurerm" {
 
   alias           = "CoreServices"
   subscription_id = "dca0ca16-7ea7-4948-b7df-f3afb0803f5e"
-}*/
+}
 #############################################
 data "azurerm_resource_group" "arg" {
   name      = "arg-dev-r1-Marktest-01"
