@@ -56,3 +56,25 @@ variable "azurePrivateDNS" {
     "web"       = "privatelink.web.core.windows.net"
   }
 }
+
+variable "azurerm_subnet_name" {
+  type = string
+}
+
+variable "virtual_network_name" {
+  type = string
+}
+
+variable "resource_group_name" {
+  type = string
+}
+########################################################
+
+# Variables - Common Tags
+variable "costCentre" {}
+variable "service" {}
+variable "serviceDescription" {}
+variable "serviceOwner" {}
+variable "serviceOwnerGroup" {}
+variable "technicalContact" {}
+variable "technicalContactGroup" {}
