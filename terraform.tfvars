@@ -7,7 +7,7 @@ refName  = "poc"
 instance = "01"
 #azurerm_subnet_name   = "Data"
 #virtual_network_name  = "vnt-dev-r1-demo-01"
-#resource_group_name   = "arg-dev-r1-demo-01"
+resource_group_name   = "arg-dev-r1-demo-01"
 
 
 #######################################################
