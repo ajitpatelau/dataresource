@@ -13,9 +13,7 @@ variable "location" {
   }
 }
 
-variable "resource_group_name" {
-  type        = string
-}
+
 variable "deploy" {
   type        = map(any)
   description = "Location to be reployed"
