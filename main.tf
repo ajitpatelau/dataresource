@@ -15,7 +15,7 @@ provider "azurerm" {
 }
 #############################################
 data "azurerm_resource_group" "arg" {
-  name      = "arg-dev-r1-Marktest-01"
+  name      = var.resource_group_name
   #name     = "arg-${var.env}-${var.location[var.deploy.location].code}-${var.refName}-${var.instance}"
   #location = var.location[var.deploy.location].region
 }
@@ -27,7 +27,7 @@ resource "azurerm_virtual_network" "vnt" {
   name                = "vnt-dev-r1-demo-01"
   location            =  var.location[var.deploy.location].region
   address_space       = ["10.0.0.0/16"]
-  resource_group_name = azurerm_resource_group.arg.name
+  resource_group_name = var.resource_group_name
 
   #tags = local.default_tags
 }
@@ -38,7 +38,7 @@ resource "azurerm_virtual_network" "vnt" {
 resource "azurerm_subnet" "sbnt" {
   #for_each             = toset([for k, v in var.akvList : v.subnetName])
   name                 = "vmsubnet"
-  resource_group_name  = azurerm_resource_group.arg.name
+  resource_group_name  = var.resource_group_name
   virtual_network_name = azurerm_virtual_network.vnt.name
   address_prefixes     = ["10.0.1.0/24"]
 
@@ -48,7 +48,7 @@ resource "azurerm_subnet" "sbnt" {
 resource "azurerm_subnet" "pepakvsbnt" {
   #for_each             = toset([for k, v in var.akvList : v.subnetName])
   name                 = "Data"
-  resource_group_name  = azurerm_resource_group.arg.name
+  resource_group_name  = var.resource_group_name
   virtual_network_name = azurerm_virtual_network.vnt.name
   address_prefixes     = ["10.0.1.0/24"]
 
@@ -62,7 +62,7 @@ resource "azurerm_private_dns_zone" "dnszone" {
 
   for_each            = var.azurePrivateDNS
   name                = each.value
-  resource_group_name = azurerm_resource_group.arg.name
+  resource_group_name = var.resource_group_name
 
   #tags = local.default_tags
 }
